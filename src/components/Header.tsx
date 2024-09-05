@@ -34,7 +34,9 @@ const HeaderMobile: React.FC = () => {
     </MenuItem>;
 
     return (<div className="flex justify-between pb-4">
-        <img src={LogoSvg}></img>
+        <Link to="/">
+            <img src={LogoSvg}></img>
+        </Link>
         <Menu>
             <MenuButton as="div">
                 <CgMenuRightAlt size={30} color="white" />
@@ -67,7 +69,9 @@ const HeaderDesktop: React.FC = () => {
 
     return (<div className="grid-menu text-2xs">
         <div className="row-start-1 col-start-1 flex items-center">
-            <img src={LogoSvg}></img>
+            <Link to="/">
+                <img src={LogoSvg}></img>
+            </Link>
             <div className="pl-2">Engineered to meet the needs of the corporate sector</div>
         </div>
         <div className="row-start-2 col-start-1"></div>

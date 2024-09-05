@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import classnames from "classnames";
 import useBreakpoint from "../hooks/useBreakpoint";
 import PageLayout from "../components/PageLayout";
@@ -36,9 +37,23 @@ const Home: React.FC = () => {
             <div className="divide-y divide-[#818181]">
                 <Header />
 
-                <Section title="OUR CAPABILITY">
-                    We build platforms and dApps on the Ethereum blockchain, providing consultancy and workshops to unlock the power of this new technology for companies big and small across Australia.
-                </Section>
+                <div className="flex flex-col items-center">
+                    <div className="flex flex-auto items-end text-4xl text-center pt-16 pb-4">Reinvent the future</div>
+                    <div className="h-[130px] sm:h-[240px] px-[30px] pt-[30px] overflow-hidden">
+                        <motion.div className="sun h-[240px] w-[240px] sm:h-[500px] sm:w-[500px]"
+                            initial={{ y: "60%" }}
+                            animate={{ y: "10%" }}
+                            transition={{ ease: "easeIn", duration: 3 }}></motion.div>
+                    </div>
+                </div>
+
+                <div className="flex flex-wrap justify-between pt-16 pb-4">
+                    <div className="flex flex-col md:w-1/2">
+                        <div className="text-sm font-semibold">Web 3 is complex. We untangle it.</div>
+                        <div className="text-sm">DLTx is a leading blockchain dev studio unlocking opportunity for Australia's most forward-focused and driven companies.</div>
+                    </div>
+                    <div className="flex items-end text-sm font-semibold pt-4">The revolution is here</div>
+                </div>
 
                 <div className="grid-card gap-6 py-4">
                     <CardImage src={WomanImg}></CardImage>
