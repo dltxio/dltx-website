@@ -1,12 +1,16 @@
 import React, { useCallback, useState } from "react";
 import { motion } from "framer-motion";
+import classnames from "classnames";
+import useBreakpoint from "../hooks/useBreakpoint";
 import PageLayout from "../components/PageLayout";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import Slideshow from "../components/Slideshow";
+import Slideshow, { SlideshowLayout } from "../components/Slideshow";
 import PyramidImg from "../assets/pyramid.svg";
 import WaveformImg from "../assets/waveform.svg";
 import SpikesImg from "../assets/spikes.svg";
+
+//=============================== Contract Cards ==============================
 
 const ContractCard: React.FC<{ title: string, children: React.ReactNode }> = ({ title, children }) => {
     return (<div className="flex flex-col px-16 py-4">
@@ -36,6 +40,8 @@ const DeFiCard: React.FC = () => {
         DLTx has significant experience in tokenisation, de-fi and ICO crowd sales.
     </ContractCard>;
 }
+
+//================================= Blog Cards ================================
 
 const BlogCard: React.FC<{ category: string, subheading: string, children: React.ReactNode }> = ({ category, subheading, children }) => {
     return (<div className="flex flex-col bg-gradient-to-r from-transparent to-[#202020] rounded-xl p-6">
@@ -69,8 +75,35 @@ const TransformationCard: React.FC = () => {
     </BlogCard>;
 }
 
+//============================= Testimonial Cards =============================
+
+const TestimonalCard: React.FC<{ name: string, role: string, children: React.ReactNode }> = ({ name, role, children }) => {
+    const { isLg } = useBreakpoint();
+
+    return (<div className="flex flex-col items-center">
+        <div className={classnames("text-lg text-center", { "w-1/2": isLg }, { "w-4/5": !isLg })}>{children}</div>
+        <div className="text-2xs pt-10">{name}</div>
+        <div className="text-2xs">{role}</div>
+    </div>);
+}
+
+const TBDCard: React.FC = () => {
+    return <TestimonalCard name="WILLIAM SMITH" role="CTO / TBD">
+        “DLTx's expertise in blockchain and smart contracts has streamlined our processes, delivering secure, production-ready solutions that drive our business forward.”
+    </TestimonalCard>;
+}
+
+const AnotherTBDCard: React.FC = () => {
+    return <TestimonalCard name="JILL JACKSON" role="CEO / Another TBD">
+        “I would highly recommend DLTx. Their ability to execute and deliver an outstanding product has made my job significantly easier.”
+    </TestimonalCard>;
+}
+
+//================================= End Cards =================================
+
 const contractCards = [<ERC20Card />, <ERC721Card />, <DeFiCard />];
 const contractImages = [PyramidImg, WaveformImg, SpikesImg];
+const testimonialCards = [<TBDCard />, <AnotherTBDCard />];
 
 const Home: React.FC = () => {
     const [activeIndex, setActiveIndex] = useState<number>(-1);
@@ -106,7 +139,7 @@ const Home: React.FC = () => {
 
                 <div className="flex py-12">
                     <div className="flex flex-auto">
-                        <Slideshow slides={contractCards} isColumnLayout={true} onChange={(index: number, isDesktop: boolean) => setActiveIndex(isDesktop ? index : -1)} />
+                        <Slideshow slides={contractCards} layout={SlideshowLayout.Column} onChange={(index: number, isDesktop: boolean) => setActiveIndex(isDesktop ? index : -1)} />
                     </div>
                     {(activeIndex >= 0) && <div className="flex flex-[0_0_50%] justify-center items-center">
                         {contractImages.map((src, index) => (index == activeIndex) && <ContractImage key={index} src={src}></ContractImage>)}
@@ -118,6 +151,11 @@ const Home: React.FC = () => {
                     <FutureCard />
                     <BasicsCard />
                     <TransformationCard />
+                </div>
+
+                <div className="flex flex-col items-center py-16">
+                    <div className="text-sm pb-10">TESTIMONIALS</div>
+                    <Slideshow slides={testimonialCards} layout={SlideshowLayout.SinglePerRow}/>
                 </div>
 
                 <Footer />

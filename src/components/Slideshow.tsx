@@ -3,6 +3,12 @@ import { motion, useAnimate } from "framer-motion";
 import classnames from "classnames";
 import useBreakpoint from "../hooks/useBreakpoint";
 
+export enum SlideshowLayout {
+    Column,
+    SinglePerRow,
+    MultiplePerRow
+}
+
 type ControlProps = {
     isActive: boolean;
     children: React.ReactNode;
@@ -11,7 +17,7 @@ type ControlProps = {
 type SlideshowProps = {
     slides: React.ReactNode[],
     delay?: number,
-    isColumnLayout?: boolean;
+    layout?: SlideshowLayout;
     onChange?: (index: number, isDesktop: boolean) => void
 }
 
@@ -39,7 +45,7 @@ const SlideControl: React.FC<ControlProps> = ({ isActive, children }) => {
     </motion.div>);
 }
 
-const Slideshow: React.FC<SlideshowProps> = ({ slides, delay = 10000, isColumnLayout = false, onChange }) => {
+const Slideshow: React.FC<SlideshowProps> = ({ slides, delay = 10000, layout = SlideshowLayout.MultiplePerRow, onChange }) => {
     const timeoutId = useRef<number>();
     const [active, setActive] = useState(0);
     const { isLg } = useBreakpoint();
@@ -55,15 +61,13 @@ const Slideshow: React.FC<SlideshowProps> = ({ slides, delay = 10000, isColumnLa
 
     useEffect(() => onChange?.(active, isLg), [isLg]);
 
-    const Mobile = useCallback(({ _active }) => <div className="flex">
-        {slides.map((s, i) => <SlideControl key={i} isActive={i == _active}>{s}</SlideControl>)}
-    </div>, [slides]);
+    const SlideshowEx = useCallback(({ _active }) => <div className={classnames("flex", { "flex-col": layout == SlideshowLayout.Column })}>
+        {slides.map((s, i) => isLg && (layout != SlideshowLayout.SinglePerRow) ?
+            <FadeControl key={"fc" + i} isActive={i == _active}>{s}</FadeControl> :
+            <SlideControl key={"sc" + i} isActive={i == _active}>{s}</SlideControl>)}
+    </div>, [slides, layout, isLg]);
 
-    const Desktop = useCallback(({ _active }) => <div className={classnames("flex", { "flex-col": isColumnLayout })}>
-        {slides.map((s, i) => <FadeControl key={i} isActive={i == _active}>{s}</FadeControl>)}
-    </div>, [slides]);
-
-    return isLg ? <Desktop _active={active} /> : <Mobile _active={active} />;
+    return <SlideshowEx _active={active}></SlideshowEx>;
 }
 
 export default Slideshow;
