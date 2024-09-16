@@ -1,34 +1,12 @@
 import React from "react";
-import classnames from "classnames";
-import useBreakpoint from "../hooks/useBreakpoint";
 import PageLayout from "../components/PageLayout";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import Section from "../components/Section";
+import { CardImage, CardText } from "../components/Card";
 import WomanImg from "../assets/woman.png";
 import RoomImg from "../assets/room.png";
 import MeetingImg from "../assets/meeting.png";
-
-const Section: React.FC<{ title: string, children: React.ReactNode }> = ({ title, children }) => {
-    const { isLg } = useBreakpoint();
-
-    return (<div className="flex flex-col items-center py-16">
-        <div className="text-sm pb-10">{title}</div>
-        <div className={classnames("text-lg text-center", { "w-1/2": isLg }, { "w-4/5": !isLg })}>{children}</div>
-    </div >);
-}
-
-const CardText: React.FC<{ title: string, children: React.ReactNode }> = ({ title, children }) => {
-    return (<div className="flex flex-col justify-between bg-gradient-to-r from-transparent to-[#202020] rounded-lg p-6">
-        <div className="text-xl mb-10">{title}</div>
-        <div className="text-xs">{children}</div>
-    </div>);
-}
-
-const CardImage: React.FC<{ src: string }> = ({ src }) => {
-    return (<div className="flex rounded-lg overflow-hidden">
-        <img src={src}></img>
-    </div>);
-}
 
 const Capability: React.FC = () => {
     return (

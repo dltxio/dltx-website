@@ -17,6 +17,16 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+@layer components {
+  .base-input {
+      @apply bg-[#303030] text-white rounded-sm p-2 mb-1;
+  }
+}
+
+input:focus, textarea:focus {
+  outline: #E6FF02 solid thin;
+}
+
 .sun {
   background: radial-gradient(at 50% 50%, white, #E7FF03);
   box-shadow: 0 0 30px 15px #E7FF03;

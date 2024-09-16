@@ -7,7 +7,7 @@ const PageLayout: React.FC<{
     canonicalUrl?: string;
 }> = ({ children, title, metaDescription, canonicalUrl }) => {
     return (
-        <div className="container mx-auto min-h-screen py-10">
+        <div className="container flex mx-auto min-h-screen py-10">
             <title>{title ?? "DLTx"}</title>
             <meta
                 name="description"
@@ -16,7 +16,7 @@ const PageLayout: React.FC<{
             {canonicalUrl && (
                 <link rel="canonical" href={`https://dltx.io${canonicalUrl}`} />
             )}
-            <div className="row-[span_9_/_span_9] overflow-auto">
+            <div className="overflow-auto">
                 {children}
             </div>
         </div>
