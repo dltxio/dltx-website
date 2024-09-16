@@ -19,11 +19,20 @@
 
 @layer components {
   .base-input {
-      @apply bg-[#303030] text-white rounded-sm p-2 mb-1;
+    @apply bg-[#303030] text-white rounded-sm p-2 mb-1;
+  }
+
+  .blog-subheading {
+    @apply text-xs font-bold pt-4 pb-2;
+  }
+
+  .blog-paragraph {
+    @apply text-2xs pb-2;
   }
 }
 
-input:focus, textarea:focus {
+input:focus,
+textarea:focus {
   outline: #E6FF02 solid thin;
 }
 
@@ -83,6 +92,18 @@ body {
 @media screen and (min-width: 768px) {
   .grid-card-sm {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+}
+
+.grid-blog {
+  display: grid;
+  grid-template-columns: 100% 0;
+  grid-template-rows: auto auto auto auto;
+}
+
+@media screen and (min-width: 1024px) {
+  .grid-blog {
+    grid-template-columns: 75% 1fr;
   }
 }
 

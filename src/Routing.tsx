@@ -2,6 +2,7 @@ import { AppRoutes } from "./types/app";
 import Home from "./pages/Home";
 import Capability from "./pages/Capability";
 import Manifesto from "./pages/Manifesto";
+import Insights from "./pages/Insights";
 import Contact from "./pages/Contact";
 
 export const Routing: AppRoutes = [
@@ -16,6 +17,10 @@ export const Routing: AppRoutes = [
   {
     path: "/manifesto",
     element: <Manifesto />
+  },
+  {
+    path: "/insights",
+    element: <Insights />
   },
   {
     path: "/contact",
