@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import { CgMenuRightAlt } from "react-icons/cg";
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import classnames from "classnames";
-import LogoSvg from "../assets/logo.svg";
 import useBreakpoint from "../hooks/useBreakpoint";
+import LogoSvg from "../assets/logo.svg";
 
 type MenuProps = {
     title: string;

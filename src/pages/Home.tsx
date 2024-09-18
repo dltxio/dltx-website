@@ -3,8 +3,6 @@ import { motion } from "framer-motion";
 import classnames from "classnames";
 import useBreakpoint from "../hooks/useBreakpoint";
 import PageLayout from "../components/PageLayout";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
 import Slideshow, { SlideshowLayout } from "../components/Slideshow";
 import PyramidImg from "../assets/pyramid.svg";
 import WaveformImg from "../assets/waveform.svg";
@@ -116,49 +114,43 @@ const Home: React.FC = () => {
 
     return (
         <PageLayout>
-            <div className="divide-y divide-[#818181]">
-                <Header />
-
-                <div className="flex flex-col items-center">
-                    <div className="flex flex-auto items-end text-4xl text-center pt-16">Reinvent the Future</div>
-                    <div className="h-[130px] sm:h-[240px] px-[30px] pt-[30px] overflow-hidden">
-                        <motion.div className="sun h-[240px] w-[240px] sm:h-[500px] sm:w-[500px]"
-                            initial={{ y: "60%" }}
-                            animate={{ y: "10%" }}
-                            transition={{ ease: "easeIn", duration: 3 }}></motion.div>
-                    </div>
+            <div className="flex flex-col items-center">
+                <div className="flex flex-auto items-end text-4xl text-center pt-16">Reinvent the Future</div>
+                <div className="h-[130px] sm:h-[240px] px-[30px] pt-[30px] overflow-hidden">
+                    <motion.div className="sun h-[240px] w-[240px] sm:h-[500px] sm:w-[500px]"
+                        initial={{ y: "60%" }}
+                        animate={{ y: "10%" }}
+                        transition={{ ease: "easeIn", duration: 3 }}></motion.div>
                 </div>
+            </div>
 
-                <div className="flex flex-wrap justify-between pt-16 pb-4">
-                    <div className="flex flex-col md:w-1/2">
-                        <div className="text-sm font-semibold">Web 3 is complex. We untangle it.</div>
-                        <div className="text-sm">DLTx is a leading blockchain dev studio unlocking opportunity for Australia's most forward-focused and driven companies.</div>
-                    </div>
-                    <div className="flex items-end text-sm font-semibold pt-4">The revolution is here</div>
+            <div className="flex flex-wrap justify-between pt-16 pb-4">
+                <div className="flex flex-col md:w-1/2">
+                    <div className="text-sm font-semibold">Web 3 is complex. We untangle it.</div>
+                    <div className="text-sm">DLTx is a leading blockchain dev studio unlocking opportunity for Australia's most forward-focused and driven companies.</div>
                 </div>
+                <div className="flex items-end text-sm font-semibold pt-4">The revolution is here</div>
+            </div>
 
-                <div className="flex py-12">
-                    <div className="flex flex-auto">
-                        <Slideshow slides={contractCards} layout={SlideshowLayout.Column} onChange={(index: number, isDesktop: boolean) => setActiveIndex(isDesktop ? index : -1)} />
-                    </div>
-                    {(activeIndex >= 0) && <div className="flex flex-[0_0_50%] justify-center items-center">
-                        {contractImages.map((src, index) => (index == activeIndex) && <ContractImage key={index} src={src}></ContractImage>)}
-                    </div>}
-
+            <div className="flex py-12">
+                <div className="flex flex-auto">
+                    <Slideshow slides={contractCards} layout={SlideshowLayout.Column} onChange={(index: number, isDesktop: boolean) => setActiveIndex(isDesktop ? index : -1)} />
                 </div>
+                {(activeIndex >= 0) && <div className="flex flex-[0_0_50%] justify-center items-center">
+                    {contractImages.map((src, index) => (index == activeIndex) && <ContractImage key={index} src={src}></ContractImage>)}
+                </div>}
 
-                <div className="grid-card-sm gap-6 py-4">
-                    <FutureCard />
-                    <BasicsCard />
-                    <TransformationCard />
-                </div>
+            </div>
 
-                <div className="flex flex-col items-center py-16">
-                    <div className="text-sm pb-10">TESTIMONIALS</div>
-                    <Slideshow slides={testimonialCards} layout={SlideshowLayout.SinglePerRow}/>
-                </div>
+            <div className="grid-card-sm gap-6 py-4">
+                <FutureCard />
+                <BasicsCard />
+                <TransformationCard />
+            </div>
 
-                <Footer />
+            <div className="flex flex-col items-center py-16">
+                <div className="text-sm pb-10">TESTIMONIALS</div>
+                <Slideshow slides={testimonialCards} layout={SlideshowLayout.SinglePerRow} />
             </div>
         </PageLayout>
     );
