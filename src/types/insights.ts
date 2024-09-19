@@ -16,24 +16,34 @@ export type Heading = {
 
 export type DescriptonItem = Paragraph | Heading;
 
-export type Blog = {
+export type BlogShort = {
   id: string;
   attributes: {
+    publishedAt: Date;
     slug: string;
     category: string;
     title: string;
     abstract: string;
-    logo: {
+    picture: {
       data: {
         attributes: {
           url: string;
         }
       }
     }
-    description: DescriptonItem[];
+  };
+}
+
+export type BlogDetail = BlogShort & {
+  attributes: {
+    content: DescriptonItem[];
   };
 };
 
-export type BlogResponse = {
-  data: Blog[];
+export type BlogsResponse = {
+  data: BlogShort[];
+};
+
+export type BlogsDetailResponse = {
+  data: BlogDetail[];
 };
