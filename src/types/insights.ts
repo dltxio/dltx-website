@@ -16,7 +16,7 @@ export type Heading = {
 
 export type DescriptonItem = Paragraph | Heading;
 
-export type BlogShort = {
+export type InsightShort = {
   id: string;
   attributes: {
     publishedAt: Date;
@@ -34,16 +34,16 @@ export type BlogShort = {
   };
 }
 
-export type BlogDetail = BlogShort & {
+export type InsightDetail = InsightShort & {
   attributes: {
     content: DescriptonItem[];
   };
 };
 
-export type BlogsResponse = {
-  data: BlogShort[];
+export type InsightsResponse = {
+  data: InsightShort[];
 };
 
-export type BlogsDetailResponse = {
-  data: BlogDetail[];
+export type InsightsDetailResponse = {
+  data: InsightDetail[];
 };

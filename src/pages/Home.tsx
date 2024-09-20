@@ -2,7 +2,9 @@ import React, { useCallback, useState } from "react";
 import { motion } from "framer-motion";
 import classnames from "classnames";
 import useBreakpoint from "../hooks/useBreakpoint";
+import useInsights from "../hooks/useInsights";
 import PageLayout from "../components/PageLayout";
+import InsightCard from "../components/InsightCard";
 import Slideshow, { SlideshowLayout } from "../components/Slideshow";
 import PyramidImg from "../assets/pyramid.svg";
 import WaveformImg from "../assets/waveform.svg";
@@ -39,40 +41,6 @@ const DeFiCard: React.FC = () => {
     </ContractCard>;
 }
 
-//================================= Blog Cards ================================
-
-const BlogCard: React.FC<{ category: string, subheading: string, children: React.ReactNode }> = ({ category, subheading, children }) => {
-    return (<div className="flex flex-col bg-gradient-to-r from-transparent to-[#202020] rounded-xl p-6">
-        <div className="mb-4">
-            <div className="text-2xs font-semibold w-fit mb-4 border border-white border-solid rounded-xl px-2 py-1">{category}</div>
-            <div className="text-sm font-semibold">{subheading}</div>
-        </div>
-        <div className="text-2xs">{children}</div>
-    </div>);
-}
-
-const FutureCard: React.FC = () => {
-    return <BlogCard category="Future Thinking" subheading="Exploring the Future of Blockchain: Unleashing Revolutionary Potential">
-        Dive into the captivating world of blockchain technology and discover its immense potential for revolutionizing industries across the globe.
-        In this insightful blog post, we unravel...
-    </BlogCard>;
-}
-
-const BasicsCard: React.FC = () => {
-    return <BlogCard category="Blockchain Basics" subheading="Demystifying Smart Contracts: Unlocking Efficiency and Security">
-        Smart contracts have emerged as one of the most revolutionary applications of blockchain technology.
-        In this informative blog post, we demystify the concept of smart contracts and delve into their potential to streamline processes, eliminate intermediaries
-    </BlogCard>;
-}
-
-const TransformationCard: React.FC = () => {
-    return <BlogCard category="Transformation" subheading="Blockchain and Data Privacy: Building Trust in the Digital Age">
-        In an era dominated by data-driven technologies, privacy and trust have become paramount concerns.
-        Enter blockchain, the technology that holds the promise of reshaping the landscape of data privacy.
-        In this thought-provoking
-    </BlogCard>;
-}
-
 //============================= Testimonial Cards =============================
 
 const TestimonalCard: React.FC<{ name: string, role: string, children: React.ReactNode }> = ({ name, role, children }) => {
@@ -105,6 +73,7 @@ const testimonialCards = [<TBDCard />, <AnotherTBDCard />];
 
 const Home: React.FC = () => {
     const [activeIndex, setActiveIndex] = useState<number>(-1);
+    const [insights] = useInsights();
 
     const ContractImage: React.FC<{ src: string }> = useCallback(({ src }) => <motion.img className="mx-16"
         src={src}
@@ -142,10 +111,8 @@ const Home: React.FC = () => {
 
             </div>
 
-            <div className="grid-card-sm gap-6 py-4">
-                <FutureCard />
-                <BasicsCard />
-                <TransformationCard />
+            <div className="grid-card gap-6 py-4">
+                {insights.slice(0, 3).map((insight) => <InsightCard {...insight} />)}
             </div>
 
             <div className="flex flex-col items-center py-16">

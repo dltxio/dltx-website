@@ -12,6 +12,7 @@ export enum SlideshowLayout {
 type ControlProps = {
     isActive: boolean;
     children: React.ReactNode;
+    onClick?: () => void;
 }
 
 type SlideshowProps = {
@@ -21,26 +22,26 @@ type SlideshowProps = {
     onChange?: (index: number, isDesktop: boolean) => void
 }
 
-const FadeControl: React.FC<ControlProps> = ({ isActive, children }) => {
+const FadeControl: React.FC<ControlProps> = ({ isActive, children, onClick }) => {
     const [scope, animate] = useAnimate();
 
     useEffect(() => {
         animate(scope.current, { opacity: isActive ? 1 : 0.5 }, { duration: 0.5 })
     }, [isActive]);
 
-    return (<motion.div ref={scope}>
+    return (<motion.div ref={scope} onClick={onClick}>
         {children}
     </motion.div>);
 }
 
-const SlideControl: React.FC<ControlProps> = ({ isActive, children }) => {
+const SlideControl: React.FC<ControlProps> = ({ isActive, children, onClick }) => {
     const [scope, animate] = useAnimate();
 
     useEffect(() => {
         animate(scope.current, { translateX: isActive ? "0" : "100%" }, { duration: 0.5 })
     }, [isActive]);
 
-    return (<motion.div ref={scope}>
+    return (<motion.div ref={scope} onClick={onClick}>
         {isActive ? children : <></>}
     </motion.div>);
 }
@@ -61,10 +62,10 @@ const Slideshow: React.FC<SlideshowProps> = ({ slides, delay = 10000, layout = S
 
     useEffect(() => onChange?.(active, isLg), [isLg]);
 
-    const SlideshowEx = useCallback(({ _active }) => <div className={classnames("flex", { "flex-col": layout == SlideshowLayout.Column })}>
+    const SlideshowEx = useCallback(({ _active }) => <div className={classnames("flex cursor-pointer", { "flex-col": layout == SlideshowLayout.Column })}>
         {slides.map((s, i) => isLg && (layout != SlideshowLayout.SinglePerRow) ?
-            <FadeControl key={"fc" + i} isActive={i == _active}>{s}</FadeControl> :
-            <SlideControl key={"sc" + i} isActive={i == _active}>{s}</SlideControl>)}
+            <FadeControl key={"fc" + i} isActive={i == _active} onClick={() => setActive(i)}>{s}</FadeControl> :
+            <SlideControl key={"sc" + i} isActive={i == _active} onClick={next}>{s}</SlideControl>)}
     </div>, [slides, layout, isLg]);
 
     return <SlideshowEx _active={active}></SlideshowEx>;

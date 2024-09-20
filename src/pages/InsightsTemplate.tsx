@@ -3,18 +3,18 @@ import { useParams } from "react-router-dom";
 import classnames from "classnames";
 import axios from "axios";
 import PageLayout from "../components/PageLayout";
-import { BlogsDetailResponse, BlogDetail } from "../types/insights";
+import { InsightsDetailResponse, InsightDetail } from "../types/insights";
 
-const STRAPI_BLOG_URL = "http://localhost:1337"
+const STRAPI_BLOG_URL = "http://10.5.20.52:1337"
 
 const InsightsTemplate: React.FC = () => {
   const { slug } = useParams();
-  const [blog, setBlog] = useState<BlogDetail>();
+  const [blog, setBlog] = useState<InsightDetail>();
 
   useEffect(() => {
     axios
       // Add bearer token to get past CORS
-      .get<BlogsDetailResponse>(
+      .get<InsightsDetailResponse>(
         `${STRAPI_BLOG_URL}/api/blogs?filters[slug][$eq]=${slug}&populate=picture`,
         {
           headers: {
