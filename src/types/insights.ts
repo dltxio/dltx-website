@@ -16,8 +16,9 @@ export type Heading = {
 
 export type DescriptonItem = Paragraph | Heading;
 
-export type InsightShort = {
+export type InsightBrief = {
   id: string;
+  pictureAbsoluteUrl: string;
   attributes: {
     publishedAt: Date;
     slug: string;
@@ -34,16 +35,8 @@ export type InsightShort = {
   };
 }
 
-export type InsightDetail = InsightShort & {
+export type InsightFull = InsightBrief & {
   attributes: {
     content: DescriptonItem[];
   };
-};
-
-export type InsightsResponse = {
-  data: InsightShort[];
-};
-
-export type InsightsDetailResponse = {
-  data: InsightDetail[];
 };

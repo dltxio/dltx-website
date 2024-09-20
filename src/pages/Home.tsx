@@ -2,7 +2,7 @@ import React, { useCallback, useState } from "react";
 import { motion } from "framer-motion";
 import classnames from "classnames";
 import useBreakpoint from "../hooks/useBreakpoint";
-import useInsights from "../hooks/useInsights";
+import { useInsights } from "../hooks/useInsights";
 import PageLayout from "../components/PageLayout";
 import InsightCard from "../components/InsightCard";
 import Slideshow, { SlideshowLayout } from "../components/Slideshow";
@@ -111,7 +111,7 @@ const Home: React.FC = () => {
 
             </div>
 
-            <div className="grid-card gap-6 py-4">
+            <div className="grid-card gap-6 px-2 py-4">
                 {insights.slice(0, 3).map((insight) => <InsightCard {...insight} />)}
             </div>
 

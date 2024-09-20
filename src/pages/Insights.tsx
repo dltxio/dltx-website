@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import classnames from "classnames";
+import { useSettingsProvider } from "../providers/Settings";
 import useBreakpoint from "../hooks/useBreakpoint";
-import useInsights from "../hooks/useInsights";
-import { InsightShort } from "../types/insights";
+import { useInsights, InsightSortType } from "../hooks/useInsights";
+import { InsightBrief } from "../types/insights";
 import PageLayout from "../components/PageLayout";
 import Section from "../components/Section";
 import Dropdown from "../components/Dropdown";
@@ -11,19 +12,10 @@ import InsightCard from "../components/InsightCard";
 
 const INSIGHTS_PER_PAGE = 9;
 
-const ShowAll = "Show All";
-
-enum SortType {
-  DateListed = "Date Listed",
-  Category = "Category",
-  Title = "Title",
-}
-
 const Insights: React.FC = () => {
-  const [allInsights, categories] = useInsights();
-  const [insights, setInsights] = useState<InsightShort[]>([]);
-  const [categoryFilter, setCategoryFilter] = useState<string>(ShowAll);
-  const [sortType, setSortType] = useState<SortType>(SortType.DateListed);
+  const { sortType, categoryFilter, setSortType, setCategoryFilter } = useSettingsProvider();
+  const [insights, categories] = useInsights(sortType, categoryFilter);
+  const [paginatedInsights, setPaginatedInsights] = useState<InsightBrief[]>([]);
   const [totalPages, setTotalPages] = useState<number>(0);
   const [searchParams, _] = useSearchParams();
   const { isLg } = useBreakpoint();
@@ -33,20 +25,10 @@ const Insights: React.FC = () => {
 
   const page = parseInt(searchParams.get("page") ?? "") || 1;
 
-  const sortPredicate = (a: InsightShort, b: InsightShort): number => {
-    let result = 0;
-    if (sortType == SortType.Category)
-      result = a.attributes.category.localeCompare(b.attributes.category);
-    else if (sortType == SortType.Title)
-      result = a.attributes.title.localeCompare(b.attributes.title);
-    return result || (a.attributes.publishedAt > b.attributes.publishedAt ? 1 : -1);
-  }
-
   useEffect(() => {
-    const filtered = allInsights.filter(b => (categoryFilter == ShowAll) || (b.attributes.category == categoryFilter)).sort(sortPredicate);
-    setTotalPages(isLg ? filtered.length / INSIGHTS_PER_PAGE + 1 : 0);
-    setInsights(isLg ? filtered.slice(INSIGHTS_PER_PAGE * (page - 1), INSIGHTS_PER_PAGE * page) : filtered);
-  }, [allInsights, isLg, categoryFilter, sortType]);
+    setTotalPages(isLg ? insights.length / INSIGHTS_PER_PAGE + 1 : 0);
+    setPaginatedInsights(isLg ? insights.slice(INSIGHTS_PER_PAGE * (page - 1), INSIGHTS_PER_PAGE * page) : insights);
+  }, [insights, isLg]);
 
   return (
     <PageLayout>
@@ -58,7 +40,7 @@ const Insights: React.FC = () => {
         <div className="flex justify-between text-xs py-2">
           <div className="flex">
             <span className="pr-1">Sort by:</span>
-            <Dropdown items={Object.values(SortType)} onClick={(item => setSortType(item as SortType))} />
+            <Dropdown items={Object.values(InsightSortType)} onClick={(item => setSortType(item as InsightSortType))} />
           </div>
           <div className="flex flex-wrap-reverse justify-end max-w-[50%]">
             {categories && categories.map(c => <div
@@ -66,8 +48,8 @@ const Insights: React.FC = () => {
               onClick={() => setCategoryFilter(c)}>{c}</div>)}
           </div>
         </div>
-        <div className="grid-card gap-6 py-4">
-          {insights.map((insight) => <InsightCard {...insight} showImage={true} />)}
+        <div className="grid-card gap-6 px-2 py-4">
+          {paginatedInsights.map((insight) => <InsightCard {...insight} showImage={true} />)}
         </div>
         {(totalPages > 0) && <div className="flex justify-center pb-6">
           {Array.from({ length: totalPages }, (_, i) => i + 1).map(i => {
