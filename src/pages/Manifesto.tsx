@@ -3,9 +3,9 @@ import PageLayout from "../components/PageLayout";
 import Section from "../components/Section";
 import Slideshow from "../components/Slideshow";
 import { CardImage, CardText } from "../components/Card";
-import OfficeImg from "../assets/office.png";
-import RoomImg from "../assets/room.png";
-import DesksImg from "../assets/desks.png";
+import OfficeImg from "../assets/office.jpg";
+import RoomImg from "../assets/room.jpg";
+import DesksImg from "../assets/desks.jpg";
 
 const Slide: React.FC<{ title: string, subheading: string, children: React.ReactNode }> = ({ title, subheading, children }) => {
     return (<div className="flex flex-col mx-4 lg:mx-10 my-10">
@@ -42,7 +42,7 @@ const Slide3: React.FC = () => {
 
 const Manifesto: React.FC = () => {
     return (
-        <PageLayout>
+        <PageLayout title="Manifesto" metaDescription="How DLTx conducts its business and our methodology" canonicalUrl="/manifesto">
             <Section title="OUR MANIFESTO">
                 We now live in a world where technology advances at a rapid pace. A world in a constant state of flux. A civilisation that refuses to believe in a centralised and falsely governed state. We believe our destiny is in no way shaped by the propaganda of today.
             </Section>

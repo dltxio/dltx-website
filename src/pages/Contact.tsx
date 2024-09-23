@@ -28,7 +28,7 @@ const Contact: React.FC = () => {
         }
     };
 
-    return (<PageLayout>
+    return (<PageLayout title="Contact" metaDescription="Contact DLTx to discuss a potential partnership" canonicalUrl="/contact">
         <Section title="CONTACT">
             We build platforms and dApps on the Ethereum blockchain, providing consultancy and workshops to unlock the power of this new technology for companies big and small across Australia.
         </Section>

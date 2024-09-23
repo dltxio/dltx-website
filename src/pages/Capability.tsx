@@ -2,13 +2,13 @@ import React from "react";
 import PageLayout from "../components/PageLayout";
 import Section from "../components/Section";
 import { CardImage, CardText } from "../components/Card";
-import WomanImg from "../assets/woman.png";
-import RoomImg from "../assets/room.png";
-import MeetingImg from "../assets/meeting.png";
+import WomanImg from "../assets/woman.jpg";
+import RoomImg from "../assets/room.jpg";
+import MeetingImg from "../assets/meeting.jpg";
 
 const Capability: React.FC = () => {
     return (
-        <PageLayout>
+        <PageLayout title="Capability" metaDescription="Outlines the capability of DLTx in blockchain consultancy" canonicalUrl="/capability">
             <Section title="OUR CAPABILITY">
                 We build platforms and dApps on the Ethereum blockchain, providing consultancy and workshops to unlock the power of this new technology for companies big and small across Australia.
             </Section>

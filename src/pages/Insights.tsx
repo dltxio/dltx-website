@@ -32,7 +32,7 @@ const Insights: React.FC = () => {
   }, [insights, isLg]);
 
   return (
-    <PageLayout>
+    <PageLayout title="Insights" metaDescription="Find out about the latest news in the blockchain and cryptocurrency spaces" canonicalUrl="/insights">
       <Section title="INSIGHTS">
         The latest trends and expert analysis in decentralised technologies. Stay ahead with in-depth content on blockchain, digital assets, and the future of the internet.
       </Section>

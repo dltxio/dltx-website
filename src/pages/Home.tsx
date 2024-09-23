@@ -82,7 +82,7 @@ const Home: React.FC = () => {
         transition={{ ease: "easeIn", duration: 1 }} />, []);
 
     return (
-        <PageLayout>
+        <PageLayout title="Home" metaDescription="DLTx is a leading blockchain dev studio unlocking opportunity for Australia's most forward-focused and driven companies" canonicalUrl="/">
             <div className="flex flex-col items-center">
                 <div className="flex flex-auto items-end text-4xl text-center pt-16">Reinvent the Future</div>
                 <div className="h-[130px] sm:h-[240px] px-[30px] pt-[30px] overflow-hidden">

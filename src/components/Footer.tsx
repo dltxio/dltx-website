@@ -2,8 +2,8 @@ import classnames from "classnames";
 import useBreakpoint from "../hooks/useBreakpoint";
 import { BOOKING_URL } from "../constants/env";
 import LogoSvg from "../assets/logo.svg";
-import DoorImg from "../assets/door.png";
-import DoorOpenImg from "../assets/door-open.png";
+import DoorImg from "../assets/door.jpg";
+import DoorOpenImg from "../assets/door-open.jpg";
 
 const Footer: React.FC = () => {
     const { isLg, isXl } = useBreakpoint();

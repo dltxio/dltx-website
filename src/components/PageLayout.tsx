@@ -12,14 +12,9 @@ type PageLayoutProps = {
 const PageLayout: React.FC<PageLayoutProps> = ({ children, title, metaDescription, canonicalUrl }) => {
     return (
         <div className="container flex mx-auto min-h-screen py-10">
-            <title>{title ?? "DLTx"}</title>
-            <meta
-                name="description"
-                content={metaDescription ?? "DLTx"}
-            />
-            {canonicalUrl && (
-                <link rel="canonical" href={`https://dltx.io${canonicalUrl}`} />
-            )}
+            {title && <title>{title}</title>}
+            {metaDescription && <meta name="description" content={metaDescription} />}
+            {canonicalUrl && <link rel="canonical" href={`https://dltx.io${canonicalUrl}`} />}
             <div className="overflow-hidden">
                 <div className="flex flex-col h-full divide-y divide-[#818181] px-2">
                     <Header />
