@@ -13,7 +13,7 @@ import SpikesImg from "../assets/spikes.svg";
 //=============================== Contract Cards ==============================
 
 const ContractCard: React.FC<{ title: string, children: React.ReactNode }> = ({ title, children }) => {
-    return (<div className="flex flex-col px-16 py-4">
+    return (<div className="flex flex-col px-4 lg:px-10 py-4">
         <div className="text-sm font-semibold mb-4">{title}</div>
         <div className="text-2xs">{children}</div>
     </div>);
@@ -106,13 +106,13 @@ const Home: React.FC = () => {
                     <Slideshow slides={contractCards} layout={SlideshowLayout.Column} onChange={(index: number, isDesktop: boolean) => setActiveIndex(isDesktop ? index : -1)} />
                 </div>
                 {(activeIndex >= 0) && <div className="flex flex-[0_0_50%] justify-center items-center">
-                    {contractImages.map((src, index) => (index == activeIndex) && <ContractImage key={index} src={src}></ContractImage>)}
+                    {contractImages.map((src, i) => (i == activeIndex) && <ContractImage key={i} src={src}></ContractImage>)}
                 </div>}
 
             </div>
 
-            <div className="grid-card gap-6 px-2 py-4">
-                {insights.slice(0, 3).map((insight) => <InsightCard {...insight} />)}
+            <div className="grid-card gap-6 py-4">
+                {insights.slice(0, 3).map((insight, i) => <InsightCard key={i} {...insight} />)}
             </div>
 
             <div className="flex flex-col items-center py-16">

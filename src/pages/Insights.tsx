@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import classnames from "classnames";
 import { useSettingsProvider } from "../providers/Settings";
 import useBreakpoint from "../hooks/useBreakpoint";
@@ -20,8 +20,9 @@ const Insights: React.FC = () => {
   const [searchParams, _] = useSearchParams();
   const { isLg } = useBreakpoint();
 
-  // !! Need to remember filter/sort settings
-  // !! Fix issue with scale effect and scrollbar
+  // !! Fix dropdown keyboard focus
+  // !! Remove link color for anchor
+  // !! Font
 
   const page = parseInt(searchParams.get("page") ?? "") || 1;
 
@@ -40,7 +41,7 @@ const Insights: React.FC = () => {
         <div className="flex justify-between text-xs py-2">
           <div className="flex">
             <span className="pr-1">Sort by:</span>
-            <Dropdown items={Object.values(InsightSortType)} onClick={(item => setSortType(item as InsightSortType))} />
+            <Dropdown items={Object.values(InsightSortType)} initial={sortType} onClick={(item => setSortType(item as InsightSortType))} />
           </div>
           <div className="flex flex-wrap-reverse justify-end max-w-[50%]">
             {categories && categories.map(c => <div
@@ -48,13 +49,13 @@ const Insights: React.FC = () => {
               onClick={() => setCategoryFilter(c)}>{c}</div>)}
           </div>
         </div>
-        <div className="grid-card gap-6 px-2 py-4">
-          {paginatedInsights.map((insight) => <InsightCard {...insight} showImage={true} />)}
+        <div className="grid-card gap-6 py-4">
+          {paginatedInsights.map((insight, i) => <InsightCard key={i} {...insight} showImage={true} />)}
         </div>
         {(totalPages > 0) && <div className="flex justify-center pb-6">
           {Array.from({ length: totalPages }, (_, i) => i + 1).map(i => {
-            const href = `/insights` + ((i == 1) ? `` : `?page=${i}`);
-            return (<a href={href} className={classnames("page-marker", { "text-white border-white": page == i })}>{i}</a>)
+            const to = `/insights` + ((i == 1) ? `` : `?page=${i}`);
+            return (<Link className={classnames("page-marker", { "text-white border-white": page == i })} to={to}>{i}</Link>)
           })}
         </div>}
       </div>}

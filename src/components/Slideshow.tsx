@@ -47,7 +47,7 @@ const SlideControl: React.FC<ControlProps> = ({ isActive, children, onClick }) =
 }
 
 const Slideshow: React.FC<SlideshowProps> = ({ slides, delay = 10000, layout = SlideshowLayout.MultiplePerRow, onChange }) => {
-    const timeoutId = useRef<number>();
+    const timeoutId = useRef<NodeJS.Timeout>();
     const [active, setActive] = useState(0);
     const { isLg } = useBreakpoint();
 

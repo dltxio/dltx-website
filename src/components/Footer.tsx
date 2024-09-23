@@ -1,5 +1,6 @@
 import classnames from "classnames";
 import useBreakpoint from "../hooks/useBreakpoint";
+import { BOOKING_URL } from "../constants/env";
 import LogoSvg from "../assets/logo.svg";
 import DoorImg from "../assets/door.png";
 import DoorOpenImg from "../assets/door-open.png";
@@ -7,13 +8,18 @@ import DoorOpenImg from "../assets/door-open.png";
 const Footer: React.FC = () => {
     const { isLg, isXl } = useBreakpoint();
 
+    const bookConsultClicked = () => {
+        // robots can still crawl javascript links so we don't lose SEO
+        window.open(BOOKING_URL, "_blank", "noopener noreferrer");
+    }
+
     return (<div className="pt-4 items-center">
         <div className="relative">
             <div className="lg:hidden">
                 <img src={DoorImg}></img>
                 <div className="absolute w-full h-full top-0 left-0">
                     <div className="flex h-full justify-center items-center">
-                        <button className="bg-[#E6FF02] text-black text-xs rounded-sm mx-auto p-2">Book a consultation</button>
+                        <button className="bg-[#E6FF02] text-black text-xs rounded-sm mx-auto p-2" onClick={bookConsultClicked}>Book a consultation</button>
                     </div>
                 </div>
             </div>
@@ -21,7 +27,7 @@ const Footer: React.FC = () => {
                 <img src={DoorOpenImg}></img>
                 <div className="absolute w-full top-[53%] left-0">
                     <div className="flex">
-                        <button className="bg-[#E6FF02] text-black text-xs rounded-sm mx-auto px-3 py-2">Book a consultation</button>
+                        <button className="bg-[#E6FF02] text-black text-xs rounded-sm mx-auto px-3 py-2" onClick={bookConsultClicked}>Book a consultation</button>
                     </div>
                 </div>
             </div>

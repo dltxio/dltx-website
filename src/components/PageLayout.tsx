@@ -20,8 +20,8 @@ const PageLayout: React.FC<PageLayoutProps> = ({ children, title, metaDescriptio
             {canonicalUrl && (
                 <link rel="canonical" href={`https://dltx.io${canonicalUrl}`} />
             )}
-            <div className="overflow-auto">
-                <div className="flex flex-col h-full divide-y divide-[#818181]">
+            <div className="overflow-hidden">
+                <div className="flex flex-col h-full divide-y divide-[#818181] px-2">
                     <Header />
                     {children}
                     <div className="flex-auto !border-t-0"></div>  {/* For short page, pad to ensure footer is at bottom */}

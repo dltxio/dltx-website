@@ -74,18 +74,7 @@ body {
 
 @media screen and (min-width: 768px) {
   .grid-card {
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-  }
-}
-
-.grid-card-sm {
-  display: grid;
-  grid-template-columns: repeat(1, minmax(0, 1fr));
-}
-
-@media screen and (min-width: 768px) {
-  .grid-card-sm {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(390px, 1fr));
   }
 }
 

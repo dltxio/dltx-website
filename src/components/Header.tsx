@@ -15,7 +15,7 @@ type MenuProps = {
 
 const MenuItemBase: React.FC<{ template: React.FC<MenuProps>, title: string, index?: number }> = ({ template, title, index }) => {
     const to = "/" + title.toLowerCase();
-    const isActiveRoute = window.location.pathname.endsWith(to);
+    const isActiveRoute = window.location.pathname.includes(to);
 
     return React.createElement(template, { title, index, to, isActiveRoute });
 };

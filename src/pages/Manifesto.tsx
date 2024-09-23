@@ -8,7 +8,7 @@ import RoomImg from "../assets/room.png";
 import DesksImg from "../assets/desks.png";
 
 const Slide: React.FC<{ title: string, subheading: string, children: React.ReactNode }> = ({ title, subheading, children }) => {
-    return (<div className="flex flex-col m-10">
+    return (<div className="flex flex-col mx-4 lg:mx-10 my-10">
         <div className="mb-4">
             <div className="text-2xs font-semibold mb-4">{title}</div>
             <div className="text-sm font-semibold">{subheading}</div>
