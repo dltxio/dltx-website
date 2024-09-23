@@ -21,8 +21,6 @@ const Insights: React.FC = () => {
   const { isLg } = useBreakpoint();
 
   // !! Fix dropdown keyboard focus
-  // !! Remove link color for anchor
-  // !! Font
 
   const page = parseInt(searchParams.get("page") ?? "") || 1;
 
@@ -45,7 +43,7 @@ const Insights: React.FC = () => {
           </div>
           <div className="flex flex-wrap-reverse justify-end max-w-[50%]">
             {categories && categories.map(c => <div
-              className={classnames("pl-3 cursor-pointer", { "underline underline-offset-4 decoration-[#E6FF02]": c == categoryFilter })}
+              className={classnames("pl-3 cursor-pointer", { "underline underline-offset-4 decoration-dltx-green": c == categoryFilter })}
               onClick={() => setCategoryFilter(c)}>{c}</div>)}
           </div>
         </div>

@@ -6,7 +6,7 @@ import { InsightBrief } from "../types/insights";
 
 const InsightCard: React.FC<InsightBrief & { showImage?: boolean }> = (insight) => {
     return (insight && <Link to={`/insights/${insight.attributes?.slug}`}>
-        <motion.div className={classnames("w-full bg-gradient-to-r from-transparent to-[#202020] rounded-xl overflow-hidden hover:text-white", { "lg:aspect-[4/3]": !insight.showImage }, { "lg:aspect-[3/4]": insight.showImage })}
+        <motion.div className={classnames("w-full base-gradient rounded-xl overflow-hidden hover:text-white", { "lg:aspect-[4/3]": !insight.showImage }, { "lg:aspect-[3/4]": insight.showImage })}
             whileHover={{ scale: 1.03 }}
             transition={{ ease: "easeIn", duration: 0.3 }}>
             {insight.showImage && <img className="h-1/2 w-full object-cover" src={`${insight.pictureAbsoluteUrl}`}></img>}

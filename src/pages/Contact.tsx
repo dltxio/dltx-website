@@ -41,8 +41,8 @@ const Contact: React.FC = () => {
                 <Input placeholder="Phone" onChange={fieldChanged("phone")}></Input>
                 <Input placeholder="Your message" multiline={true} className="flex-auto" onChange={fieldChanged("message")}></Input>
                 {messageResponse ?
-                    <div className={classnames("rounded-sm mt-1 py-3 text-center", { "text-[#E6FF02]": messageResponse[0] }, { "text-[#A94442]": !messageResponse[0] })}>{messageResponse}</div> :
-                    <button className="bg-[#E6FF02] text-black rounded-sm mt-1 py-3" onClick={() => sendMessage(fields.current)}>Send message</button>}
+                    <div className={classnames("rounded-sm mt-1 py-3 text-center", { "text-dltx-green": messageResponse[0] }, { "text-[#A94442]": !messageResponse[0] })}>{messageResponse}</div> :
+                    <button className="base-button mt-1 py-3" onClick={() => sendMessage(fields.current)}>Send message</button>}
                 <div className="text-2xs text-center pt-3">We value your privacy and will never abuse your personal details</div>
             </div>
         </div>

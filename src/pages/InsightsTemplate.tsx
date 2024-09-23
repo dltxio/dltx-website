@@ -16,12 +16,12 @@ const InsightsTemplate: React.FC = () => {
         <div className="min-w-[20%]">
           <div className="text-2xs font-semibold w-fit border border-white border-solid rounded-xl px-2 py-1 mt-1 mb-4 mr-2">{insight.attributes?.category}</div>
         </div>
-        <div className="grid-blog">
+        <div className="grid-insight">
           <div className="text-2xl font-semibold pb-6">{insight.attributes?.title}</div>
-          <div className="col-start-1 row-start-2 blog-paragraph">{insight.attributes?.abstract}</div>
-          <div className="col-start-1 row-start-3 col-span-2 border-b border-[#818181] my-6"></div>
+          <div className="col-start-1 row-start-2 insight-paragraph">{insight.attributes?.abstract}</div>
+          <div className="col-start-1 row-start-3 col-span-2 border-b border-dltx-grey my-6"></div>
           {<div className="col-start-1 row-start-4 flex-col">
-            {insight.attributes?.content.map((c, i) => <div key={i} className={classnames({ "blog-subheading": c.type == "heading" }, { "blog-paragraph": c.type == "paragraph" })}>{c.children[0].text}</div>)}
+            {insight.attributes?.content.map((c, i) => <div key={i} className={classnames({ "insight-subheading": c.type == "heading" }, { "insight-paragraph": c.type == "paragraph" })}>{c.children[0].text}</div>)}
           </div>}
         </div>
       </div>}

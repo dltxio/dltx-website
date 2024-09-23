@@ -19,7 +19,7 @@ const Footer: React.FC = () => {
                 <img src={DoorImg}></img>
                 <div className="absolute w-full h-full top-0 left-0">
                     <div className="flex h-full justify-center items-center">
-                        <button className="bg-[#E6FF02] text-black text-xs rounded-sm mx-auto p-2" onClick={bookConsultClicked}>Book a consultation</button>
+                        <button className="base-button text-xs mx-auto p-2" onClick={bookConsultClicked}>Book a consultation</button>
                     </div>
                 </div>
             </div>
@@ -27,7 +27,7 @@ const Footer: React.FC = () => {
                 <img src={DoorOpenImg}></img>
                 <div className="absolute w-full top-[53%] left-0">
                     <div className="flex">
-                        <button className="bg-[#E6FF02] text-black text-xs rounded-sm mx-auto px-3 py-2" onClick={bookConsultClicked}>Book a consultation</button>
+                        <button className="base-button text-xs mx-auto px-3 py-2" onClick={bookConsultClicked}>Book a consultation</button>
                     </div>
                 </div>
             </div>
@@ -40,7 +40,7 @@ const Footer: React.FC = () => {
                 <div>ERC721&nbsp;NFT&nbsp;CONTRACTS/</div>
                 <div>ERC20&nbsp;SMART&nbsp;CONTRACTS</div>
             </div>
-            <div className="text-[#787878]">2024 &#169; DLTx Labs</div>
+            <div className="text-dltx-grey">2024 &#169; DLTx Labs</div>
         </div>
     </div>);
 }

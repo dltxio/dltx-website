@@ -1,13 +1,10 @@
 import React from "react";
 import { ClipLoader } from "react-spinners";
-import PageLayout from "../components/PageLayout";
 
 const Transition: React.FC = () => (
-  <PageLayout>
-    <div className="absolute inset-0 flex flex-col items-center justify-center w-screen h-screen">
-      <ClipLoader color="white" />
-    </div>
-  </PageLayout>
+  <div className="flex justify-center items-center w-full h-full bg-black">
+    <ClipLoader color="white" />
+  </div>
 );
 
 export default Transition;

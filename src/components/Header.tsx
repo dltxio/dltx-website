@@ -22,13 +22,15 @@ const MenuItemBase: React.FC<{ template: React.FC<MenuProps>, title: string, ind
 
 const HeaderMobile: React.FC = () => {
     const MenuItemNormal: React.FC<MenuProps> = ({ title, to, isActiveRoute }) => <MenuItem>
-        <div className={classnames("text-xs bg-black border-solid border-[#787878] border [&:not(:last-child)]:border-b-0 px-3 py-1", { "border-l-[#E6FF02] border-l-4": !!isActiveRoute })}>
-            <Link className={classnames({ "text-white": isActiveRoute }, { "text-[#787878]": !isActiveRoute })} to={to}>{title}</Link>
+        <div className={classnames("text-xs bg-black border-solid border-dltx-grey border [&:not(:last-child)]:border-b-0 px-3 py-1 hover:text-dltx-green",
+            { "text-white border-l-dltx-green border-l-4": isActiveRoute },
+            { "text-dltx-grey": !isActiveRoute })}>
+            <Link to={to}>{title}</Link>
         </div>
     </MenuItem>;
 
     const MenuItemHighlight: React.FC<MenuProps> = ({ title, to }) => <MenuItem>
-        <div className={classnames("text-xs bg-[#E6FF02] border-solid border-[#787878] border px-3 py-1")}>
+        <div className={classnames("text-xs bg-dltx-green border-solid border-dltx-grey border px-3 py-1 hover:bg-white")}>
             <Link className={"text-black"} to={to}>{title}</Link>
         </div>
     </MenuItem>;
@@ -55,14 +57,16 @@ const HeaderMobile: React.FC = () => {
 
 const HeaderDesktop: React.FC = () => {
     const MenuItemNormal: React.FC<MenuProps> = ({ title, index, to, isActiveRoute }) => <>
-        <div className={`row-start-1 col-start-${index} flex items-center px-2`}>
-            <Link className={classnames({ "text-white": isActiveRoute }, { "text-[#77878]": !isActiveRoute })} to={to}>{title}</Link>
+        <div className={classnames(`row-start-1 col-start-${index} flex items-center px-2 hover:text-dltx-green`,
+            { "text-white": isActiveRoute },
+            { "text-dltx-grey": !isActiveRoute })}>
+            <Link to={to}>{title}</Link>
         </div>
-        <div className={classnames(`row-start-2 col-start-${index}`, { "border-b-2 border-[#E6FF02]": isActiveRoute })}></div>
+        <div className={classnames(`row-start-2 col-start-${index}`, { "border-b-2 border-dltx-green": isActiveRoute })}></div>
     </>;
 
     const MenuItemHighlight: React.FC<MenuProps> = ({ title, index, to }) => <>
-        <div className={`row-start-1 col-start-${index} bg-[#E6FF02] py-1 px-3 ml-2 rounded-sm`}>
+        <div className={`row-start-1 col-start-${index} base-button py-1 px-3 ml-2`}>
             <Link className={"text-black"} to={to}>{title}</Link>
         </div>
     </>;
