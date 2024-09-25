@@ -18,7 +18,7 @@ const Contact: React.FC = () => {
 
     const fieldChanged = (k: keyof ContactFields) => (v: string) => fields.current = { ...fields.current, [k]: v };
 
-    const sendMessage = (fields: ContactFields) => {
+    const sendMessage = (_fields: ContactFields) => {
         try {
             // TODO: create google form and submit
             setMessageResponse([true, "Message sent"]);

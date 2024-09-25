@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "./Header";
 import Footer from "./Footer";
+import { BASE_URL } from "../constants/env";
 
 type PageLayoutProps = {
     children: React.ReactNode;
@@ -14,7 +15,7 @@ const PageLayout: React.FC<PageLayoutProps> = ({ children, title, metaDescriptio
         <div className="container flex mx-auto min-h-screen py-10">
             {title && <title>{title}</title>}
             {metaDescription && <meta name="description" content={metaDescription} />}
-            {canonicalUrl && <link rel="canonical" href={`https://dltx.io${canonicalUrl}`} />}
+            {canonicalUrl && <link rel="canonical" href={`${BASE_URL}${canonicalUrl}`} />}
             <div className="overflow-hidden">
                 <div className="flex flex-col h-full divide-y divide-dltx-grey px-2 py-1">
                     <Header />

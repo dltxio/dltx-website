@@ -62,7 +62,7 @@ const Slideshow: React.FC<SlideshowProps> = ({ slides, delay = 10000, layout = S
 
     useEffect(() => onChange?.(active, isLg), [isLg]);
 
-    const SlideshowEx = useCallback(({ _active }) => <div className={classnames("flex cursor-pointer", { "flex-col": layout == SlideshowLayout.Column })}>
+    const SlideshowEx = useCallback(({ _active }: { _active: number }) => <div className={classnames("flex cursor-pointer", { "flex-col": layout == SlideshowLayout.Column })}>
         {slides.map((s, i) => isLg && (layout != SlideshowLayout.SinglePerRow) ?
             <FadeControl key={"fc" + i} isActive={i == _active} onClick={() => setActive(i)}>{s}</FadeControl> :
             <SlideControl key={"sc" + i} isActive={i == _active} onClick={next}>{s}</SlideControl>)}

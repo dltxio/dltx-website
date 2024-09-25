@@ -1,4 +1,5 @@
 export type EnvVariable =
+  | "VITE_BASE_URL"
   | "VITE_BOOKING_URL"
   | "VITE_CONTACT_URL"
   | "VITE_STRAPI_URL"
