@@ -1,11 +1,12 @@
-## Offical website for DLTx Pty Ltd
+## Offical website for DLTx Labs Pty Ltd
 
 Brisbane's Blockchain, Web3, Smart Contract and Crypto Developers.
 
-![dltx-svgAsset 1](https://user-images.githubusercontent.com/8411406/118200149-d9ad3280-b497-11eb-9df3-df4a17b6070a.png)
+![logo](https://github.com/user-attachments/assets/e7930c00-628e-48bb-9b86-5cf65fe8ae1a)
 
 ## Blockchain Australia
 DLTx is a proud member of Blockchain Australia
+
 ![Blockchain-Australia](https://user-images.githubusercontent.com/8411406/118200117-cbf7ad00-b497-11eb-93b5-6e5ca886789d.png)
 
 ## Development
