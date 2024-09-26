@@ -2,7 +2,7 @@ import React from "react";
 import PageLayout from "../components/PageLayout";
 import Section from "../components/Section";
 import Slideshow from "../components/Slideshow";
-import { CardImage, CardText } from "../components/Card";
+import Card from "../components/Card";
 import OfficeImg from "../assets/office.jpg";
 import RoomImg from "../assets/room.jpg";
 import DesksImg from "../assets/desks.jpg";
@@ -54,12 +54,12 @@ const Manifesto: React.FC = () => {
             <div className="flex flex-col items-center py-10">
                 <div className="text-sm pb-10">METHODOLOGY</div>
                 <div className="grid-card gap-6">
-                    <CardImage src={RoomImg}></CardImage>
-                    <CardText title="Blockchain Software Delivered with Precision">Prioritise your project’s success with a development approach that mirrors Agile’s focus on early and continuous delivery. Our method ensures your digital experience is delivered with precision, and valuable results at every stage.</CardText>
-                    <CardText title="Adaptable Design for a Changing World">Embrace flexibility in your process. Just as Agile welcomes changing requirements, our approach is built to evolve with adaptable blockchain solutions that keep your project ahead of the curve.</CardText>
-                    <CardText title="Modular, Efficient, Effective">Achieve more with less. Our approach emphasises simplicity and efficiency, allowing for modular components that work seamlessly together, ensuring your project stays on time and on target.</CardText>
-                    <CardText title="Collaboratively Crafted, Perfectly Organised">Focused on collaboration. Our approach is structured to support teamwork and creativity, with self-organising layouts that promote innovation and reflect Agile’s core values.</CardText>
-                    <CardImage src={DesksImg}></CardImage>
+                    <Card src={RoomImg}></Card>
+                    <Card title="Blockchain Software Delivered with Precision">Prioritise your project’s success with a development approach that mirrors Agile’s focus on early and continuous delivery. Our method ensures your digital experience is delivered with precision, and valuable results at every stage.</Card>
+                    <Card title="Adaptable Design for a Changing World">Embrace flexibility in your process. Just as Agile welcomes changing requirements, our approach is built to evolve with adaptable blockchain solutions that keep your project ahead of the curve.</Card>
+                    <Card title="Modular, Efficient, Effective">Achieve more with less. Our approach emphasises simplicity and efficiency, allowing for modular components that work seamlessly together, ensuring your project stays on time and on target.</Card>
+                    <Card title="Collaboratively Crafted, Perfectly Organised">Focused on collaboration. Our approach is structured to support teamwork and creativity, with self-organising layouts that promote innovation and reflect Agile’s core values.</Card>
+                    <Card src={DesksImg}></Card>
                 </div>
             </div>
         </PageLayout>

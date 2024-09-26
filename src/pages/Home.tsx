@@ -4,7 +4,7 @@ import classnames from "classnames";
 import useBreakpoint from "../hooks/useBreakpoint";
 import { useInsights } from "../hooks/useInsights";
 import PageLayout from "../components/PageLayout";
-import InsightCard from "../components/InsightCard";
+import Insight from "../components/Insight";
 import Slideshow, { SlideshowLayout } from "../components/Slideshow";
 import PyramidImg from "../assets/pyramid.svg";
 import WaveformImg from "../assets/waveform.svg";
@@ -112,7 +112,7 @@ const Home: React.FC = () => {
             </div>
 
             <div className="grid-card gap-6 py-4">
-                {insights.slice(0, 3).map((insight, i) => <InsightCard key={i} {...insight} />)}
+                {insights.slice(0, 3).map((insight, i) => <Insight key={i} {...insight} />)}
             </div>
 
             <div className="flex flex-col items-center py-16">

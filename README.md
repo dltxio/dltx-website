@@ -8,7 +8,81 @@ Brisbane's Blockchain, Web3, Smart Contract and Crypto Developers.
 DLTx is a proud member of Blockchain Australia
 ![Blockchain-Australia](https://user-images.githubusercontent.com/8411406/118200117-cbf7ad00-b497-11eb-93b5-6e5ca886789d.png)
 
-### PGP Key
+## Development
+
+### Libraries
+
+- [TypeScript](https://www.typescriptlang.org/)
+- [React](https://reactjs.org/)
+- [Vite](https://vitejs.dev/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [axios](https://axios-http.com/)
+- [Framer Motion](https://www.framer.com/motion/)
+
+### Usage
+
+To run the project locally
+
+```bash
+yarn
+yarn dev
+```
+
+### CMS
+
+This website uses Strapi to provide the content for the insights. This requires a `Collection Type` to be defined with the following fields:
+| Name     | Type               | Description                                                |
+|----------|--------------------|------------------------------------------------------------|
+| title    | Text               | Title of article                                           |
+| slug     | Text               | URL path used to reference article                         |
+| category | Enumeration        | Provides grouping of similar articles                      |
+| picture  | Media              | Image associated with article (ratio should be around 3:2) |
+| abstract | Text               | Text shown on cards                                        |
+| content  | Rich text (Blocks) | Main text of article                                       |
+
+### Contact
+
+In order to send an email from the Contact page a basic forwarder using Mailjet has been implemented which is designed to be deployed as a function;
+we use DigitalOcean. This ensures that the keys remain private (specified as environment variables `MJ_APIKEY_PUBLIC` and `MJ_APIKEY_PRIVATE`)
+and that the destination is fixed so it cannot be used for spamming purposes. The code is as follows:
+```text
+export async function main(event) {
+    try {
+        const fields = ["Given Name", "Surname", "Email", "Phone", "Message"];
+        const body = fields
+            .map(f => [f, f.charAt(0).toLowerCase() + f.replace(" ", "").slice(1)])
+            .map(([displayName, objName]) => `<b>${displayName}:</b> ` + (!event[objName] ? "Not provided" : event[objName].toString())).join("<br />");
+        const email = {
+            "Messages": [{
+                "From": { "Email": "website@dltx.io" },
+                "To": [{ "Email": "info@dltx.io" }],
+                "Subject": "Website Enquiry",
+                "HTMLPart": `${body}`
+            }]
+        };
+
+        const response = await fetch("https://api.mailjet.com/v3.1/send", {
+            headers: {
+                'Authorization': 'Basic ' + Buffer.from(process.env['MJ_APIKEY_PUBLIC'] + ":" + process.env['MJ_APIKEY_PRIVATE']).toString('base64'),
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            method: "POST",
+            body: JSON.stringify(email)
+        });
+        if (response?.status != 200)
+            throw new Error(`Request failed with status code: ${response?.status ?? "unknown"}`);
+
+        return { statusCode: 200 };
+    }
+    catch (err) {
+        console.log(err);
+        return { statusCode: 500 };
+    }
+}
+```  
+
+## PGP Key
 
 Our PGP key for info@dltx.io can be found at https://keys.openpgp.org/vks/v1/by-fingerprint/8E3AEE3D6F28284D04C1F7B1264FA2D8DE4D5ED4
 

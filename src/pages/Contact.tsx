@@ -1,8 +1,9 @@
 import React, { useRef, useState } from "react";
-import classnames from "classnames";
+import axios from "axios";
 import PageLayout from "../components/PageLayout";
 import Section from "../components/Section";
 import Input from "../components/Input";
+import { CONTACT_URL } from "../constants/env";
 
 type ContactFields = {
     givenName?: string;
@@ -13,18 +14,19 @@ type ContactFields = {
 }
 
 const Contact: React.FC = () => {
-    const [messageResponse, setMessageResponse] = useState<[boolean, string]>();
+    const [messageResponse, setMessageResponse] = useState<[string, string]>();
     const fields = useRef<ContactFields>({});
 
     const fieldChanged = (k: keyof ContactFields) => (v: string) => fields.current = { ...fields.current, [k]: v };
 
-    const sendMessage = (_fields: ContactFields) => {
+    const sendMessage = async () => {
         try {
-            // TODO: create google form and submit
-            setMessageResponse([true, "Message sent"]);
+            setMessageResponse(["text-white", "Processing..."]);
+            await axios.post(CONTACT_URL, fields.current, { headers: { 'Content-Type': 'application/json' } });
+            setMessageResponse(["text-dltx-green", "Message sent"]);
         } catch (err) {
             console.error(err);
-            setMessageResponse([false, "Failed to send message"])
+            setMessageResponse(["text-[#A94442]", "Failed to send message"])
         }
     };
 
@@ -41,12 +43,12 @@ const Contact: React.FC = () => {
                 <Input placeholder="Phone" onChange={fieldChanged("phone")}></Input>
                 <Input placeholder="Your message" multiline={true} className="flex-auto" onChange={fieldChanged("message")}></Input>
                 {messageResponse ?
-                    <div className={classnames("rounded-sm mt-1 py-3 text-center", { "text-dltx-green": messageResponse[0] }, { "text-[#A94442]": !messageResponse[0] })}>{messageResponse}</div> :
-                    <button className="base-button mt-1 py-3" onClick={() => sendMessage(fields.current)}>Send message</button>}
+                    <div className={`rounded-sm mt-1 py-3 text-center ${messageResponse[0]}`}>{messageResponse[1]}</div> :
+                    <button className="base-button mt-1 py-3" onClick={sendMessage}>Send message</button>}
                 <div className="text-2xs text-center pt-3">We value your privacy and will never abuse your personal details</div>
             </div>
         </div>
-    </PageLayout>);
+    </PageLayout >);
 };
 
 export default Contact;

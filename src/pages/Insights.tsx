@@ -8,7 +8,7 @@ import { InsightBrief } from "../types/insights";
 import PageLayout from "../components/PageLayout";
 import Section from "../components/Section";
 import Dropdown from "../components/Dropdown";
-import InsightCard from "../components/InsightCard";
+import Insight from "../components/Insight";
 
 const INSIGHTS_PER_PAGE = 9;
 
@@ -19,8 +19,6 @@ const Insights: React.FC = () => {
   const [totalPages, setTotalPages] = useState<number>(0);
   const [searchParams, _] = useSearchParams();
   const { isLg } = useBreakpoint();
-
-  // !! Fix dropdown keyboard focus
 
   const page = parseInt(searchParams.get("page") ?? "") || 1;
 
@@ -48,7 +46,7 @@ const Insights: React.FC = () => {
           </div>
         </div>
         <div className="grid-card gap-6 py-4">
-          {paginatedInsights.map((insight, i) => <InsightCard key={i} {...insight} showImage={true} />)}
+          {paginatedInsights.map((insight, i) => <Insight key={i} {...insight} showImage={true} />)}
         </div>
         {(totalPages > 0) && <div className="flex justify-center pb-6">
           {Array.from({ length: totalPages }, (_, i) => i + 1).map(i => {

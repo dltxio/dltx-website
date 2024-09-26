@@ -4,7 +4,7 @@ import classnames from "classnames";
 import { motion } from "framer-motion";
 import { InsightBrief } from "../types/insights";
 
-const InsightCard: React.FC<InsightBrief & { showImage?: boolean }> = (insight) => {
+const Insight: React.FC<InsightBrief & { showImage?: boolean }> = (insight) => {
     return (insight && <Link to={`/insights/${insight.attributes?.slug}`}>
         <motion.div className={classnames("w-full base-gradient rounded-xl overflow-hidden hover:text-white", { "lg:aspect-[4/3]": !insight.showImage }, { "lg:aspect-[3/4]": insight.showImage })}
             whileHover={{ scale: 1.03 }}
@@ -20,4 +20,4 @@ const InsightCard: React.FC<InsightBrief & { showImage?: boolean }> = (insight) 
     </Link>);
 }
 
-export default InsightCard;
+export default Insight;
