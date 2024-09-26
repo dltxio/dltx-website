@@ -56,7 +56,7 @@ a:focus {
 
 @media screen and (min-width: 768px) {
   .grid-card {
-    grid-template-columns: repeat(auto-fit, minmax(390px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(390px, 1fr));
   }
 }
 
