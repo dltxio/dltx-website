@@ -14,11 +14,11 @@ const UnderlineElement = ({ children }: PropsWithChildren) => <u>{children}</u>;
 const InsightsTemplate: React.FC = () => {
   const { slug } = useParams();
   const insight = useInsight(slug);
-  const delimiters: Record<keyof FormatTypes, (props: PropsWithChildren) => JSX.Element> = { bold: BoldElement, italic: ItalicElement, underline: UnderlineElement };
-  const keys = Object.keys(delimiters) as Array<keyof FormatTypes>;
+  const formatters: Record<keyof FormatTypes, (props: PropsWithChildren) => JSX.Element> = { bold: BoldElement, italic: ItalicElement, underline: UnderlineElement };
+  const keys = Object.keys(formatters) as Array<keyof FormatTypes>;
     
-  function format(item: Text) {
-    return keys.reduce((children, key) => !item[key] ? children : delimiters[key]({ children }), <>{item.text}</>);
+  function format(element: Text) {
+    return keys.reduce((children, key) => !element[key] ? children : formatters[key]({ children }), <>{element.text}</>);
   }
 
   return (
