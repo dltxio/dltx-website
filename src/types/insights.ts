@@ -1,6 +1,9 @@
 export type Text = {
   type: "text";
   text: string;
+  bold?: boolean;
+  italic?: boolean;
+  underline?: boolean;
 }
 
 export type Paragraph = {

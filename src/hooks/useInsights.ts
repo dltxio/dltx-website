@@ -17,7 +17,7 @@ export function useInsight(slug?: string): InsightFull | undefined {
     useEffect(() => {
         if (slug) {
             axios.get<{ data: Omit<InsightFull, "pictureAbsoluteUrl">[] }>(
-                `${STRAPI_URL}/api/blogs?filters[slug][$eq]=${slug}&populate=picture`,
+                `${STRAPI_URL}/api/insights?filters[slug][$eq]=${slug}&populate=picture`,
                 { headers: { Authorization: `Bearer ${STRAPI_API_TOKEN}` } }
             ).then(({ data }) => {
                 if (!data.data.length)
@@ -50,7 +50,7 @@ export function useInsights(sortType: InsightSortType = InsightSortType.DateList
         // we only get the fields required to display the cards and NOT the contents, which means we can do simpler client-side filtering 
         // without incurring a large download cost; can always switch to server-side filtering once the number of insights justifies it 
         axios.get<{ data: Omit<InsightBrief, "pictureAbsoluteUrl">[] }>(
-            `${STRAPI_URL}/api/blogs?fields[0]=slug&fields[1]=category&fields[2]=title&fields[3]=abstract&fields[4]=publishedAt&populate=picture`,
+            `${STRAPI_URL}/api/insights?fields[0]=slug&fields[1]=category&fields[2]=title&fields[3]=abstract&fields[4]=publishedAt&populate=picture`,
             { headers: { Authorization: `Bearer ${STRAPI_API_TOKEN}` } }
         ).then(({ data }) => {
             setCategories([...new Set(data.data.map(b => b.attributes.category)), ShowAll]);
