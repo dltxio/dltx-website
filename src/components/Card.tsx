@@ -23,7 +23,7 @@ const CardImage: React.FC<CardImageProps> = ({ src }) => {
 }
 
 export const Card: React.FC<CardTextProps | CardImageProps> = (props) => {
-    const isImage = (p: CardTextProps | CardImageProps): p is CardImageProps => (props as CardImageProps).src != undefined;
+    const isImage = (_p: CardTextProps | CardImageProps): _p is CardImageProps => (props as CardImageProps).src != undefined;
     return isImage(props) ? <CardImage {...props} /> : <CardText {...props} />;
 }
 

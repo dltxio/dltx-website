@@ -115,10 +115,10 @@ const Home: React.FC = () => {
                 {insights.slice(0, 3).map((insight, i) => <Insight key={i} {...insight} />)}
             </div>
 
-            <div className="flex flex-col items-center py-16">
+            {false /* TODO: Add testimonials */ && <div className="flex flex-col items-center py-16">
                 <div className="text-sm pb-10">TESTIMONIALS</div>
                 <Slideshow slides={testimonialCards} layout={SlideshowLayout.SinglePerRow} />
-            </div>
+            </div>}
         </PageLayout>
     );
 };

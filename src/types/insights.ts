@@ -21,7 +21,7 @@ export type DescriptonItem = Paragraph | Heading;
 
 export type InsightBrief = {
   id: string;
-  pictureAbsoluteUrl: string;
+  srcPicture: string;
   attributes: {
     publishedAt: Date;
     slug: string;

@@ -23,7 +23,7 @@ const InsightsTemplate: React.FC = () => {
 
   return (
     <PageLayout>
-      {insight && <img className="aspect-[3/2] md:aspect-[2] xl:aspect-[3] w-full object-cover py-6" src={insight.pictureAbsoluteUrl}></img>}
+      {insight && <img className="aspect-[3/2] md:aspect-[2] xl:aspect-[3] w-full object-cover py-6" src={insight.srcPicture}></img>}
 
       {insight && <div className="flex flex-col lg:flex-row py-6">
         <div className="min-w-[20%]">
