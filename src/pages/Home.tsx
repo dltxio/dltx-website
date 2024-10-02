@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, PropsWithChildren } from "react";
 import { motion } from "framer-motion";
 import classnames from "classnames";
 import useBreakpoint from "../hooks/useBreakpoint";
@@ -12,7 +12,7 @@ import SpikesImg from "../assets/spikes.svg";
 
 //=============================== Contract Cards ==============================
 
-const ContractCard: React.FC<{ title: string, children: React.ReactNode }> = ({ title, children }) => {
+const ContractCard: React.FC<PropsWithChildren<{ title: string }>> = ({ title, children }) => {
     return (<div className="flex flex-col px-4 lg:px-10 py-4">
         <div className="text-sm font-semibold mb-4">{title}</div>
         <div className="text-2xs">{children}</div>
@@ -43,7 +43,7 @@ const DeFiCard: React.FC = () => {
 
 //============================= Testimonial Cards =============================
 
-const TestimonalCard: React.FC<{ name: string, role: string, children: React.ReactNode }> = ({ name, role, children }) => {
+const TestimonalCard: React.FC<PropsWithChildren<{ name: string, role: string }>> = ({ name, role, children }) => {
     const { isLg } = useBreakpoint();
 
     return (<div className="flex flex-col items-center">

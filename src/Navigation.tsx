@@ -1,7 +1,8 @@
 import React, { Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
-import { NotFound, Routing } from "./Routing";
+import { Routing } from "./Routing";
 import Transition from "./pages/Transition";
+import NotFound from "./pages/NotFound";
 
 const Navigation: React.FC = () => (
     <Suspense fallback={<Transition />}>

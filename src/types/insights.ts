@@ -17,7 +17,7 @@ export type Heading = {
   children: Text[];
 }
 
-export type DescriptonItem = Paragraph | Heading;
+export type DescriptionItem = Paragraph | Heading;
 
 export type InsightBrief = {
   id: string;
@@ -40,6 +40,6 @@ export type InsightBrief = {
 
 export type InsightFull = InsightBrief & {
   attributes: {
-    content: DescriptonItem[];
+    content: DescriptionItem[];
   };
 };

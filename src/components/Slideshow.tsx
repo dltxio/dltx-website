@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { PropsWithChildren, useCallback, useEffect, useRef, useState } from "react";
 import { motion, useAnimate } from "framer-motion";
 import classnames from "classnames";
 import useBreakpoint from "../hooks/useBreakpoint";
@@ -9,11 +9,10 @@ export enum SlideshowLayout {
     MultiplePerRow
 }
 
-type ControlProps = {
+type ControlProps = PropsWithChildren<{
     isActive: boolean;
-    children: React.ReactNode;
     onClick?: () => void;
-}
+}>
 
 type SlideshowProps = {
     slides: React.ReactNode[],

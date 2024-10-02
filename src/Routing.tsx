@@ -1,10 +1,12 @@
+import { lazy } from "react";
 import { AppRoutes } from "./types/app";
-import Home from "./pages/Home";
-import Capability from "./pages/Capability";
-import Manifesto from "./pages/Manifesto";
-import Insights from "./pages/Insights";
-import InsightsTemplate from "./pages/InsightsTemplate";
-import Contact from "./pages/Contact";
+
+const Home = lazy(() => import("./pages/Home"));
+const Capability = lazy(() => import("./pages/Capability"));
+const Manifesto = lazy(() => import("./pages/Manifesto"));
+const Insights = lazy(() => import("./pages/Insights"));
+const InsightsTemplate = lazy(() => import("./pages/InsightsTemplate"));
+const Contact = lazy(() => import("./pages/Contact"));
 
 export const Routing: AppRoutes = [
   {
@@ -32,5 +34,3 @@ export const Routing: AppRoutes = [
     element: <Contact />
   },
 ];
-
-export { default as NotFound } from "./pages/NotFound";

@@ -1,14 +1,13 @@
-import React from "react";
+import React, { PropsWithChildren } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import { BASE_URL } from "../constants/env";
 
-type PageLayoutProps = {
-    children: React.ReactNode;
+type PageLayoutProps = PropsWithChildren<{
     title?: string;
     metaDescription?: string;
     canonicalUrl?: string;
-};
+}>
 
 const PageLayout: React.FC<PageLayoutProps> = ({ children, title, metaDescription, canonicalUrl }) => {
     return (
@@ -23,7 +22,6 @@ const PageLayout: React.FC<PageLayoutProps> = ({ children, title, metaDescriptio
                     <div className="flex-auto !border-t-0"></div>  {/* For short page, pad to ensure footer is at bottom */}
                     <Footer />
                 </div>
-
             </div>
         </div>
     );

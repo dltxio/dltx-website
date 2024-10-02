@@ -1,9 +1,8 @@
-import React from "react";
+import React, { PropsWithChildren } from "react";
 
-type CardTextProps = {
+type CardTextProps = PropsWithChildren<{
     title: string;
-    children: React.ReactNode;
-}
+}>
 
 type CardImageProps = {
     src: string;
