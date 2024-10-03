@@ -2,7 +2,7 @@
 
 Brisbane's Blockchain, Web3, Smart Contract and Crypto Developers.
 
-![logo](https://github.com/user-attachments/assets/e7930c00-628e-48bb-9b86-5cf65fe8ae1a)
+![DLTX Labs](https://github.com/user-attachments/assets/4d9d9e47-51e5-480b-bb97-ce6e3998d9a5)
 
 ## Blockchain Australia
 DLTx is a proud member of Blockchain Australia
