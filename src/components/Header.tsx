@@ -48,7 +48,7 @@ const HeaderMobile: React.FC = () => {
                 className="transition origin-top-right duration-300 ease-in data-[closed]:scale-80 data-[closed]:opacity-0 outline-none">
                 <MenuItemBase title="Capability" template={MenuItemNormal}></MenuItemBase>
                 <MenuItemBase title="Manifesto" template={MenuItemNormal}></MenuItemBase>
-                <MenuItemBase title="Insights" template={MenuItemNormal}></MenuItemBase>
+                {/* <MenuItemBase title="Insights" template={MenuItemNormal}></MenuItemBase> */}
                 <MenuItemBase title="Contact" template={MenuItemHighlight}></MenuItemBase>
             </MenuItems>
         </Menu>
@@ -83,7 +83,7 @@ const HeaderDesktop: React.FC = () => {
         <div className="row-start-2 col-start-2"></div>
         <MenuItemBase title="Capability" index={3} template={MenuItemNormal} />
         <MenuItemBase title="Manifesto" index={4} template={MenuItemNormal} />
-        <MenuItemBase title="Insights" index={5} template={MenuItemNormal} />
+        {/* <MenuItemBase title="Insights" index={5} template={MenuItemNormal} /> */}
         <MenuItemBase title="Contact" index={6} template={MenuItemHighlight} />
         <div className="row-start-2 col-start-6"></div>
     </div>);
