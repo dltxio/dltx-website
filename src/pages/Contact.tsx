@@ -1,35 +1,30 @@
-import React, { useRef, useState } from "react";
-import axios from "axios";
+import React from "react";
 import PageLayout from "../components/PageLayout";
 import Section from "../components/Section";
-import Input from "../components/Input";
-import { CONTACT_URL } from "../constants/env";
 import SteveHeadshot from "../assets/steve_headshot_v1_close.jpg";
 
-type ContactFields = {
-    givenName?: string;
-    surname?: string;
-    email?: string;
-    phone?: string;
-    message?: string;
-}
+// Unused imports and functions kept in comments for when form is restored
+// import { useRef, useState } from "react";
+// import axios from "axios";
+// import Input from "../components/Input";
+// import { CONTACT_URL } from "../constants/env";
+// type ContactFields = { givenName?: string; surname?: string; email?: string; phone?: string; message?: string; }
 
 const Contact: React.FC = () => {
-    const [messageResponse, setMessageResponse] = useState<[string, string]>();
-    const fields = useRef<ContactFields>({});
-
-    const fieldChanged = (k: keyof ContactFields) => (v: string) => fields.current = { ...fields.current, [k]: v };
-
-    const sendMessage = async () => {
-        try {
-            setMessageResponse(["text-white", "Processing..."]);
-            await axios.post(CONTACT_URL, fields.current, { headers: { 'Content-Type': 'application/json' } });
-            setMessageResponse(["text-dltx-green", "Message sent"]);
-        } catch (err) {
-            console.error(err);
-            setMessageResponse(["text-[#A94442]", "Failed to send message"])
-        }
-    };
+    // Form state and handlers - uncomment when restoring form
+    // const [messageResponse, setMessageResponse] = useState<[string, string]>();
+    // const fields = useRef<ContactFields>({});
+    // const fieldChanged = (k: keyof ContactFields) => (v: string) => fields.current = { ...fields.current, [k]: v };
+    // const sendMessage = async () => {
+    //     try {
+    //         setMessageResponse(["text-white", "Processing..."]);
+    //         await axios.post(CONTACT_URL, fields.current, { headers: { 'Content-Type': 'application/json' } });
+    //         setMessageResponse(["text-dltx-green", "Message sent"]);
+    //     } catch (err) {
+    //         console.error(err);
+    //         setMessageResponse(["text-[#A94442]", "Failed to send message"])
+    //     }
+    // };
 
     return (<PageLayout title="Contact" metaDescription="Contact DLTx to discuss a potential partnership" canonicalUrl="/contact">
         <Section title="CONTACT">
