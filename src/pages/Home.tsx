@@ -115,7 +115,9 @@ const Home: React.FC = () => {
                 {insights.slice(0, 3).map((insight, i) => <Insight key={i} {...insight} />)}
             </div>
 
-            {false /* TODO: Add testimonials */ && <div className="flex flex-col items-center py-16">
+            {/* TODO: Add testimonials section - code ready but disabled for now */}
+            {/* eslint-disable-next-line no-constant-binary-expression */}
+            {false && <div className="flex flex-col items-center py-16">
                 <div className="text-sm pb-10">TESTIMONIALS</div>
                 <Slideshow slides={testimonialCards} layout={SlideshowLayout.SinglePerRow} />
             </div>}
