@@ -20,24 +20,20 @@ const ContractCard: React.FC<PropsWithChildren<{ title: string }>> = ({ title, c
 }
 
 const ERC20Card: React.FC = () => {
-    return <ContractCard title="ERC20 Contracts">
-        ERC20 contracts lie at the heart of all de-fi exchanges and ICOs.
-        We have delivered dozens of these for our clients, from startups to decades old 'industry-leading' businesses.
-        They can also be great building blocks for your dApp.
+    return <ContractCard title="Engineers of the New Internet">
+        DLTx Labs engineers the foundations of Web3—the next evolution of the internet. We build systems that embed trust, transparency, and efficiency into every interaction, helping enterprises move beyond legacy models. From decentralised infrastructure to tokenisation strategies, we enable businesses to harness blockchain for real-world impact.
     </ContractCard>;
 }
 
 const ERC721Card: React.FC = () => {
-    return <ContractCard title="ERC721 NFT Contracts">
-        Collectables are a great use case for this technology.
-        Not only can they be used for Crypto Kitties and other virtual assets, but also real world assets such as livestock, luxury items and collectables.
+    return <ContractCard title="Enterprise Blockchain Solutions">
+        Our expertise covers the full spectrum of blockchain innovation—smart contracts, tokenisation, NFTs, Layer 2 scaling, and cross-chain interoperability. DLTx Labs delivers secure, scalable, and future-ready solutions for enterprise needs. Whether integrating blockchain into existing systems or launching new decentralised applications, we provide the architecture and execution to make it happen.
     </ContractCard>;
 }
 
 const DeFiCard: React.FC = () => {
-    return <ContractCard title="De-Fi Contracts">
-        Crowd funding and crypto currency creation can be implanted with relative ease using the power of smart contracts and the ERC20 standard.
-        DLTx has significant experience in tokenisation, de-fi and ICO crowd sales.
+    return <ContractCard title="Innovation Through Collaboration">
+        Great ideas thrive in the right environment. At DLTx Labs, we work side-by-side with clients through an agile, transparent process that accelerates delivery and minimises risk. From ideation to rapid prototyping and deployment, we combine technical excellence with strategic insight to deliver measurable value. Together, we reinvent the future.
     </ContractCard>;
 }
 
