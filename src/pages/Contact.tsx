@@ -39,7 +39,7 @@ const Contact: React.FC = () => {
                 <p>Contact Steve Milburn or book a meeting (below) to discuss your project</p>
                 <div className="space-y-2">
                     <p>+61 456 619 631</p>
-                    <p>info@dltx.io</p>
+                    <p>info@dltxlabs.com.au</p>
                     <p className="whitespace-pre-line">2503/443 Queen St<br/>Brisbane City QLD 4000<br/>Australia</p>
                 </div>
             </div>
